@@ -2,23 +2,22 @@ import java.util.ArrayList;
 
 public class criteria {
     private String criteriaName;
-    private ArrayList<terminalExpression> allExpression;
+    private ArrayList<expression> allExpression;
     criteria(String criteriaName){
         criteriaName = criteriaName;
+        allExpression = new ArrayList<>();
     }
 
     public String getCriteriaName() {
         return criteriaName;
     }
-    public ArrayList<terminalExpression> getAllExpression() {
+    public ArrayList<expression> getAllExpression() {
         return allExpression;
     }
-
     public void setCriteriaName(String criteriaName) {
         this.criteriaName = criteriaName;
     }
-
-    public void setAllExpression(ArrayList<terminalExpression> allExpression) {
+    public void setAllExpression(ArrayList<expression> allExpression) {
         this.allExpression = allExpression;
     }
 
@@ -29,16 +28,14 @@ public class criteria {
                 ", allExpression=" + allExpression +
                 '}';
     }
-    public boolean addExpression(terminalExpression newTerminalExpression) {
+    public void addExpression(expression newTerminalExpression) {
         //Check if expression already exists
-        if (allExpression.contains(newTerminalExpression)) {
+        if (allExpression != null && allExpression.contains(newTerminalExpression)) {
             //Add to interface
             System.out.println("Item already exists in this criteria");
-            return false;
         } else {
             //Add to interface
             allExpression.add(newTerminalExpression);
-            return true;
         }
     }
     public boolean removeExpression(terminalExpression oldTerminalExpression){
